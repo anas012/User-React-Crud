@@ -1,23 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
-
+import AddUser from './components/Add-User';
+import ListUser from './components/ListUser';
+import { useState } from 'react';
 function App() {
+  const [userData, setUserData] = useState([]);
+  const saveUserDataHandler = (data) => {
+    let userName = data.userName;
+    let Age = data.Age;
+    setUserData((prevData) => {
+      return [
+        ...prevData,
+        {
+          userName,
+          Age,
+          id: Math.random().toString(),
+        },
+      ];
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container mx-auto bg-slate-400'>
+      <h1 className='flex justify-center text-3xl '>User Register</h1>
+
+      <AddUser onSaveUser={saveUserDataHandler}></AddUser>
+      <ListUser users={userData} />
     </div>
   );
 }
