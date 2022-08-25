@@ -2,6 +2,8 @@ import ListsUser from './ListsUser';
 
 const ListUser = (props) => {
   //   let UserData = [];
+ 
+
   console.log(props.users);
   return (
     <div className='bg-green-400 p-10'>
@@ -19,7 +21,10 @@ const ListUser = (props) => {
           ))}
         </ul>
       </div>
+      <ListsUser></ListsUser>
     </div>
+
+    
   );
 };
 

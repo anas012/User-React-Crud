@@ -1,7 +1,7 @@
-import { useState ,useRef} from 'react';
+import { useState, useRef } from 'react';
 import { Toast } from 'primereact/toast';
 const AddUser = (props) => {
-    const toast = useRef(null);
+  const toast = useRef(null);
   const [enteredValue, setEnteredValue] = useState({
     enteredUserName: '',
     enteredAge: '',
@@ -14,9 +14,12 @@ const AddUser = (props) => {
       userName: enteredValue.enteredUserName,
       Age: enteredValue.enteredAge,
     };
-    toast.current.show({severity: 'success', summary: 'Success Message', detail: 'Order submitted'});
+    toast.current.show({
+      severity: 'success',
+      summary: 'Success',
+      detail: 'User Created',
+    });
     props.onSaveUser(userData);
-
   };
 
   const userNameHandler = (e) => {
@@ -37,9 +40,8 @@ const AddUser = (props) => {
     });
   };
   return (
-    
     <div className='flex  m-10 p-3 justify-center'>
-        <Toast ref={toast} />
+      <Toast ref={toast} />
       <form onSubmit={submitHandler}>
         <div className=' flex justify-center'>
           <label className='font-medium'>User Name</label>

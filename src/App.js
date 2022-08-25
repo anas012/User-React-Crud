@@ -4,6 +4,7 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css'; //theme
 import 'primereact/resources/primereact.min.css'; //core css
 import 'primeicons/primeicons.css';
 import AddUser from './components/Add-User';
+import AuthContext from './store/Auth';
 import ListUser from './components/ListUser';
 import { useState } from 'react';
 function App() {
@@ -22,14 +23,19 @@ function App() {
       ];
     });
   };
-
+const contextHandler=()=>
+{
+  console.log("Context Test")
+}
   return (
-    <div className='container mx-auto bg-slate-400'>
-      <h1 className='flex justify-center text-3xl '>User Register</h1>
+    <AuthContext.Provider value={{ text: 'Hello .... How are you??',onClickContext:contextHandler}}>
+      <div className='container mx-auto bg-slate-400'>
+        <h1 className='flex justify-center text-3xl '>User Register</h1>
 
-      <AddUser onSaveUser={saveUserDataHandler}></AddUser>
-      <ListUser users={userData} />
-    </div>
+        <AddUser onSaveUser={saveUserDataHandler}></AddUser>
+        <ListUser users={userData} />
+      </div>
+    </AuthContext.Provider>
   );
 }
 

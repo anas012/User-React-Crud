@@ -1,13 +1,21 @@
+import AuthContext from '../store/Auth';
+import React, { useContext } from 'react';
 const ListsUser = (props) => {
+  const ctx = useContext(AuthContext);
   return (
-    // <div className='flex flex-row justify-between' key={props.users.id}>
-    //   <p className='p-2 ml-8 font-medium'>{props.users.userName}</p>
-    //   <p className='p-2 mr-8  font-medium'>{props.users.Age}</p>
-    // </div>
-    <li key={props.users.id}>
-    {props.users.userName} ({props.users.Age} years old)
-  </li>
-  );
+    <div className='bg-purple-400 p-2 m-1'>
+   
+     
+     
+     <p>{ctx.text}</p>
+     
+     <button className='' onClick={ctx.onClickContext}>Click me</button>
+    </div>
+    
+    );
+    
+  
+
 };
 
 export default ListsUser;
